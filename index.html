@@ -13,21 +13,22 @@
 html { scroll-behavior: smooth; }
 body {
   font-family: 'Inter', system-ui, sans-serif;
-  background: #FAF7F2;
-  color: #2C1810;
+  background: var(--cream);
+  color: #1C2820;
   line-height: 1.6;
   overflow-x: hidden;
 }
 
 /* ── CSS VARIABLES ── */
 :root {
-  --dark:   #2C1810;
-  --terra:  #C8562A;
-  --sienna: #7B4A2D;
-  --oat:    #EDE4D0;
-  --cream:  #FAF7F2;
-  --muted:  #6B5A4E;
-  --border: rgba(44,24,16,0.12);
+  --dark:   #1C2820;       /* deep forest — UI headings &amp; text */
+  --terra:  #C8562A;       /* logo accent — do not change */
+  --sienna: #7B4A2D;       /* logo triangle — do not change */
+  --oat:    #D9E0D6;       /* deep forest: muted sage section */
+  --cream:  #EEF0EB;       /* deep forest: sage-tinted white page bg */
+  --card:   #F4F6F2;       /* deep forest: very light sage card bg */
+  --muted:  #4E5A52;       /* deep forest: dark sage-grey body text */
+  --border: rgba(24,31,28,0.12);
   --ease:   cubic-bezier(0.16, 1, 0.3, 1);
   --nav-h:  68px;
 }
@@ -46,31 +47,34 @@ strong { color: var(--dark); font-weight: 600; }
 .section   { padding: clamp(4rem, 8vw, 7rem) 0; }
 .section-label {
   display: inline-block;
-  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em;
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.22em;
   text-transform: uppercase; color: var(--terra);
-  background: rgba(200,86,42,0.1); border-radius: 100px;
-  padding: 0.3em 0.9em; margin-bottom: 1.2rem;
+  border-left: 2px solid var(--terra);
+  padding: 0.1em 0 0.1em 0.7em; margin-bottom: 1.4rem;
+  line-height: 1.4;
 }
 .section-heading { margin-bottom: 1rem; }
-.section-sub { font-size: 1.1rem; max-width: 52ch; color: var(--muted); margin-bottom: 2.5rem; }
+.section-sub { font-size: 1.05rem; max-width: 52ch; color: var(--muted); margin-bottom: 2.5rem; line-height: 1.75; }
 .text-center { text-align: center; }
 .text-center .section-sub { margin-left: auto; margin-right: auto; }
+.text-center .section-label { border-left: none; border-bottom: 2px solid var(--terra); padding: 0 0 0.3em 0; }
 
 /* ── BUTTONS ── */
 .btn {
   display: inline-flex; align-items: center; gap: 0.5rem;
-  padding: 0.75rem 1.6rem; border-radius: 8px;
-  font-size: 0.95rem; font-weight: 600; text-decoration: none;
-  border: none; cursor: pointer; transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease), background 0.2s;
+  padding: 0.8rem 1.75rem; border-radius: 4px;
+  font-size: 0.92rem; font-weight: 600; text-decoration: none;
+  border: none; cursor: pointer; letter-spacing: 0.02em;
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), background 0.2s;
 }
-.btn:hover  { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(44,24,16,0.18); }
+.btn:hover  { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(28,40,32,0.2); }
 .btn:active { transform: translateY(0); }
 .btn-primary { background: var(--terra); color: #fff; }
 .btn-primary:hover { background: #b34d26; }
-.btn-outline { background: transparent; color: var(--dark); border: 2px solid var(--border); }
+.btn-outline { background: transparent; color: var(--dark); border: 1.5px solid rgba(28,40,32,0.2); }
 .btn-outline:hover { border-color: var(--terra); color: var(--terra); }
-.btn-ghost   { background: rgba(255,255,255,0.12); color: #fff; border: 1.5px solid rgba(255,255,255,0.3); }
-.btn-ghost:hover { background: rgba(255,255,255,0.22); }
+.btn-ghost   { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.4); }
+.btn-ghost:hover { background: rgba(255,255,255,0.1); }
 
 /* ── NAV ── */
 nav {
@@ -81,7 +85,7 @@ nav {
   transition: background 0.4s, box-shadow 0.4s, backdrop-filter 0.4s;
 }
 nav.scrolled {
-  background: rgba(250,247,242,0.92);
+  background: rgba(238,240,235,0.94);
   backdrop-filter: blur(14px);
   box-shadow: 0 1px 0 var(--border);
 }
@@ -97,7 +101,7 @@ nav.scrolled {
 .nav-links a:hover  { background: rgba(255,255,255,0.1); color: #fff; }
 .nav-links a.active { color: #fff; font-weight: 600; }
 nav.scrolled .nav-links a { color: var(--dark); }
-nav.scrolled .nav-links a:hover { background: rgba(44,24,16,0.07); color: var(--dark); }
+nav.scrolled .nav-links a:hover { background: rgba(28,40,32,0.07); color: var(--dark); }
 nav.scrolled .nav-links a.active { color: var(--terra); }
 .nav-cta { margin-left: 0.75rem; padding: 0.5rem 1.1rem; font-size: 0.88rem; }
 .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; background: none; border: none; }
@@ -183,15 +187,16 @@ nav.scrolled .nav-links a.active { color: var(--terra); }
 /* ── HERO (HOME) ── */
 .hero {
   min-height: 100vh;
-  background: var(--dark);
+  background: #111A14;
   display: flex; align-items: center;
   position: relative; overflow: hidden;
   padding-top: var(--nav-h);
 }
 .hero-bg {
   position: absolute; inset: 0;
-  background: radial-gradient(ellipse 80% 60% at 70% 40%, rgba(200,86,42,0.18) 0%, transparent 70%),
-              radial-gradient(ellipse 60% 80% at 20% 80%, rgba(123,74,45,0.15) 0%, transparent 60%);
+  background: radial-gradient(ellipse 70% 60% at 68% 40%, rgba(200,86,42,0.16) 0%, transparent 65%),
+              radial-gradient(ellipse 55% 75% at 10% 80%, rgba(38,62,48,0.55) 0%, transparent 60%),
+              radial-gradient(ellipse 40% 50% at 50% 100%, rgba(24,31,28,0.6) 0%, transparent 50%);
 }
 .hero-triangles {
   position: absolute; right: -60px; top: 50%;
@@ -204,11 +209,10 @@ nav.scrolled .nav-links a.active { color: var(--terra); }
   padding: clamp(3rem, 8vw, 6rem) clamp(1.25rem, 5vw, 3rem);
 }
 .hero-badge {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  background: rgba(200,86,42,0.2); border: 1px solid rgba(200,86,42,0.35);
-  border-radius: 100px; padding: 0.4em 1em;
-  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em;
-  color: #e8835a; text-transform: uppercase; margin-bottom: 2rem;
+  display: inline-block;
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.22em;
+  color: rgba(200,86,42,0.9); text-transform: uppercase; margin-bottom: 1.75rem;
+  border-left: 2px solid var(--terra); padding-left: 0.7em;
   animation: heroFadeUp 0.9s var(--ease) 0.1s both;
 }
 .hero h1 {
@@ -246,7 +250,7 @@ nav.scrolled .nav-links a.active { color: var(--terra); }
   padding: 0 clamp(1.25rem, 5vw, 3rem);
   flex-wrap: wrap;
 }
-.intro-band p { color: var(--sienna); font-size: 0.9rem; font-weight: 500; }
+.intro-band p { color: var(--muted); font-size: 0.9rem; font-weight: 500; }
 .intro-logos  { display: flex; gap: 2rem; align-items: center; flex-wrap: wrap; opacity: 0.55; }
 .intro-logos span { font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; color: var(--dark); }
 
@@ -257,35 +261,41 @@ nav.scrolled .nav-links a.active { color: var(--terra); }
   gap: 1.5rem;
 }
 .service-card {
-  background: #fff; border: 1px solid var(--border);
-  border-radius: 16px; padding: 2rem;
-  transition: box-shadow 0.3s var(--ease), transform 0.3s var(--ease);
-  cursor: pointer;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 6px; padding: 2.25rem 2rem;
+  transition: box-shadow 0.35s var(--ease), transform 0.35s var(--ease);
+  cursor: pointer; position: relative;
 }
-.service-card:hover { box-shadow: 0 16px 48px rgba(44,24,16,0.1); transform: translateY(-4px); }
+.service-card:hover { box-shadow: 0 20px 56px rgba(28,40,32,0.11); transform: translateY(-5px) rotate(-0.3deg); }
 .service-icon {
-  width: 48px; height: 48px; border-radius: 12px;
-  background: rgba(200,86,42,0.1);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.4rem; margin-bottom: 1.25rem;
+  width: 32px; height: 3px; border-radius: 0;
+  background: var(--terra);
+  margin-bottom: 1.75rem;
+  font-size: 0; overflow: hidden;
 }
-.service-card h3 { margin-bottom: 0.6rem; font-size: 1.15rem; }
-.service-card p  { font-size: 0.9rem; margin-bottom: 1.25rem; }
-.service-card .price { font-size: 1rem; font-weight: 700; color: var(--terra); }
+.service-card h3 { margin-bottom: 0.65rem; font-size: 1.2rem; line-height: 1.2; }
+.service-card p  { font-size: 0.9rem; margin-bottom: 1.25rem; line-height: 1.7; }
+.service-card .price {
+  font-size: 0.82rem; font-weight: 700; color: var(--muted);
+  letter-spacing: 0.06em; text-transform: uppercase;
+  border-top: 1px solid var(--border); padding-top: 1rem; margin-top: 1rem;
+}
 .service-arrow {
-  display: inline-flex; align-items: center; gap: 0.4rem;
-  font-size: 0.82rem; font-weight: 600; color: var(--terra); margin-top: 1rem;
-  text-decoration: none;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 0.82rem; font-weight: 600; color: var(--terra); margin-top: 1.25rem;
+  text-decoration: none; letter-spacing: 0.03em;
 }
+.service-arrow::after { content: '→'; transition: transform 0.2s var(--ease); }
+.service-card:hover .service-arrow::after { transform: translateX(4px); }
 
 /* ── PAGE HERO (inner pages) ── */
 .page-hero {
-  background: var(--dark); padding: clamp(6rem, 10vw, 9rem) 0 clamp(3rem, 5vw, 5rem);
+  background: #111A14; padding: clamp(6rem, 10vw, 9rem) 0 clamp(3rem, 5vw, 5rem);
   position: relative; overflow: hidden;
 }
 .page-hero::after {
   content: ''; position: absolute; inset: 0;
-  background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(200,86,42,0.14) 0%, transparent 70%);
+  background: radial-gradient(ellipse 55% 70% at 80% 50%, rgba(200,86,42,0.12) 0%, transparent 65%), radial-gradient(ellipse 40% 60% at 5% 80%, rgba(38,62,48,0.4) 0%, transparent 55%);
   pointer-events: none;
 }
 .page-hero .container { position: relative; z-index: 1; }
@@ -297,38 +307,45 @@ nav.scrolled .nav-links a.active { color: var(--terra); }
 .cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.25rem;
+  gap: 1.5rem;
 }
 .card {
-  background: #fff; border: 1px solid var(--border);
-  border-radius: 16px; padding: 1.75rem;
-  transition: box-shadow 0.3s var(--ease), transform 0.3s var(--ease);
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 6px; padding: 2rem 1.75rem;
+  transition: box-shadow 0.35s var(--ease), transform 0.35s var(--ease);
 }
-.card:hover { box-shadow: 0 12px 36px rgba(44,24,16,0.09); transform: translateY(-3px); }
-.card-icon { font-size: 1.8rem; margin-bottom: 1rem; }
-.card h3 { font-size: 1.05rem; margin-bottom: 0.5rem; }
-.card p  { font-size: 0.88rem; }
+.card:hover { box-shadow: 0 14px 40px rgba(28,40,32,0.1); transform: translateY(-4px) rotate(0.2deg); }
+.card-icon { font-size: 0; margin-bottom: 1.25rem; }
+.card-icon::before {
+  content: ''; display: block; width: 28px; height: 3px;
+  background: var(--terra); border-radius: 0;
+}
+.card h3 { font-size: 1.05rem; margin-bottom: 0.6rem; line-height: 1.3; }
+.card p  { font-size: 0.88rem; line-height: 1.72; }
 
 /* ── PROCESS STEPS ── */
 .process-steps { display: flex; flex-direction: column; gap: 0; }
 .process-step {
-  display: grid; grid-template-columns: 56px 1fr;
-  gap: 0 1.5rem; padding-bottom: 2.5rem; position: relative;
+  display: grid; grid-template-columns: 48px 1fr;
+  gap: 0 1.5rem; padding-bottom: 2.75rem; position: relative;
 }
 .process-step:not(:last-child)::before {
   content: ''; position: absolute;
-  left: 27px; top: 52px; bottom: 0; width: 2px;
+  left: 23px; top: 48px; bottom: 0; width: 1px;
   background: linear-gradient(to bottom, var(--terra), transparent);
-  opacity: 0.25;
+  opacity: 0.2;
 }
 .step-num {
-  width: 52px; height: 52px; border-radius: 50%;
-  background: var(--terra); color: #fff;
+  width: 46px; height: 46px; border-radius: 50%;
+  background: transparent;
+  border: 1.5px solid var(--terra);
+  color: var(--terra);
   display: flex; align-items: center; justify-content: center;
-  font-size: 1rem; font-weight: 700; flex-shrink: 0;
+  font-size: 0.88rem; font-weight: 700; flex-shrink: 0;
+  font-family: 'Playfair Display', Georgia, serif; font-style: italic;
 }
-.step-body h3 { margin-bottom: 0.4rem; padding-top: 0.75rem; }
-.step-body p  { font-size: 0.9rem; }
+.step-body h3 { margin-bottom: 0.4rem; padding-top: 0.7rem; }
+.step-body p  { font-size: 0.9rem; line-height: 1.7; }
 
 /* ── TWO-COL LAYOUT ── */
 .two-col {
@@ -343,14 +360,26 @@ nav.scrolled .nav-links a.active { color: var(--terra); }
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 1.5rem;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
 }
 .stat-box {
-  background: #fff; border: 1px solid var(--border);
-  border-radius: 16px; padding: 1.75rem; text-align: center;
+  background: var(--card); padding: 2rem 1.5rem; text-align: left;
+  border-right: 1px solid var(--border);
 }
-.stat-num { font-size: 2.2rem; font-weight: 700; color: var(--terra); }
-.stat-label { font-size: 0.82rem; color: var(--muted); margin-top: 0.3rem; }
+.stat-box:last-child { border-right: none; }
+.stat-num {
+  font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 700; color: var(--dark);
+  font-family: 'Playfair Display', Georgia, serif; font-style: italic; line-height: 1;
+}
+.stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 0.5rem; line-height: 1.5; }
+@media (max-width: 640px) {
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .stat-box:nth-child(2) { border-right: none; }
+  .stat-box:not(:nth-last-child(-n+2)) { border-bottom: 1px solid var(--border); }
+}
 
 /* ── FAQ ── */
 .faq-list { display: flex; flex-direction: column; gap: 0; }
@@ -358,78 +387,84 @@ nav.scrolled .nav-links a.active { color: var(--terra); }
 .faq-question {
   width: 100%; background: none; border: none; cursor: pointer;
   display: flex; justify-content: space-between; align-items: center;
-  padding: 1.25rem 0; gap: 1rem; text-align: left;
-  font-size: 1rem; font-weight: 600; color: var(--dark);
-  transition: color 0.2s;
+  padding: 1.35rem 0; gap: 1rem; text-align: left;
+  font-size: 0.98rem; font-weight: 600; color: var(--dark);
+  transition: color 0.2s; letter-spacing: -0.01em;
 }
 .faq-question:hover { color: var(--terra); }
 .faq-chevron {
-  width: 20px; height: 20px; flex-shrink: 0;
-  border: 2px solid currentColor; border-radius: 50%;
+  width: 22px; height: 22px; flex-shrink: 0;
   display: flex; align-items: center; justify-content: center;
-  font-size: 0.7rem; transition: transform 0.35s var(--ease);
+  font-size: 1.3rem; font-weight: 300; color: var(--terra);
+  transition: transform 0.35s var(--ease); line-height: 1;
+  font-style: normal; margin-top: -2px;
 }
-.faq-item.open .faq-chevron { transform: rotate(180deg); }
+.faq-item.open .faq-chevron { transform: rotate(45deg); }
 .faq-answer {
   max-height: 0; overflow: hidden;
   transition: max-height 0.45s var(--ease), padding 0.35s;
 }
-.faq-item.open .faq-answer { max-height: 400px; padding-bottom: 1.25rem; }
-.faq-answer p { font-size: 0.92rem; }
+.faq-item.open .faq-answer { max-height: 400px; padding-bottom: 1.5rem; }
+.faq-answer p { font-size: 0.92rem; line-height: 1.75; }
 
 /* ── COMPARISON TABLE ── */
 .compare-table { width: 100%; border-collapse: collapse; border-radius: 12px; overflow: hidden; }
 .compare-table th, .compare-table td { padding: 0.9rem 1.2rem; text-align: left; font-size: 0.9rem; }
-.compare-table thead tr { background: var(--dark); color: #fff; }
+.compare-table thead tr { background: #181F1C; color: #fff; }
 .compare-table thead th { font-weight: 600; }
-.compare-table tbody tr:nth-child(odd) { background: #fff; }
+.compare-table tbody tr:nth-child(odd) { background: var(--card); }
 .compare-table tbody tr:nth-child(even) { background: var(--oat); }
 .compare-table td:first-child { color: var(--muted); }
 .compare-table .check { color: var(--terra); font-weight: 700; }
 .compare-table .cross { color: #aaa; }
 
 /* ── DARK SECTION ── */
-.section-dark { background: var(--dark); }
-.section-dark h2, .section-dark h3, .section-dark .stat-num { color: #fff; }
-.section-dark p { color: rgba(255,255,255,0.65); }
-.section-dark .section-label { background: rgba(200,86,42,0.2); color: #e8835a; }
-.section-dark .stat-box { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.1); }
+.section-dark { background: #111A14; }  /* deep forest green-black */
+.section-dark h2, .section-dark h3, .section-dark .stat-num { color: #EDF2EC; }
+.section-dark p { color: rgba(210,225,215,0.58); }
+.section-dark .section-label { color: #D4774A; border-left-color: #D4774A; }
+.section-dark .stat-box { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.07); }
 
 /* ── OAT SECTION ── */
 .section-oat { background: var(--oat); }
 
 /* ── PROFILE CARD ── */
 .profile-card {
-  background: #fff; border: 1px solid var(--border);
-  border-radius: 20px; padding: 2rem; text-align: center;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 6px; padding: 2.5rem 2rem; text-align: center;
+  border-top: 2px solid var(--terra);
 }
 .profile-avatar {
-  width: 100px; height: 100px; border-radius: 50%;
-  background: linear-gradient(135deg, var(--sienna), var(--terra));
-  display: flex; align-items: center; justify-content: center;
-  font-size: 2.5rem; margin: 0 auto 1.25rem;
+  width: 88px; height: 88px; border-radius: 50%;
+  border: 2px solid var(--border);
+  background-image: url('assets/mark-profile.jpg');
+  background-size: cover;
+  background-position: center 18%;
+  margin: 0 auto 1.25rem;
+  overflow: hidden;
 }
 .profile-card h3 { margin-bottom: 0.25rem; }
-.profile-card .title { font-size: 0.82rem; color: var(--terra); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 1rem; }
-.profile-card p { font-size: 0.9rem; margin-bottom: 1.5rem; }
+.profile-card .title { font-size: 0.68rem; color: var(--terra); font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 1rem; }
+.profile-card p { font-size: 0.9rem; margin-bottom: 1.5rem; line-height: 1.7; }
 .profile-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
-.profile-tag { background: rgba(200,86,42,0.1); color: var(--terra); border-radius: 100px; padding: 0.3em 0.85em; font-size: 0.78rem; font-weight: 600; }
+.profile-tag { background: transparent; color: var(--muted); border: 1px solid var(--border); border-radius: 3px; padding: 0.3em 0.75em; font-size: 0.75rem; font-weight: 500; }
 
 /* ── CONTACT CARDS ── */
 .contact-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
 .contact-option {
-  background: #fff; border: 1px solid var(--border);
-  border-radius: 20px; padding: 2.25rem;
-  transition: box-shadow 0.3s var(--ease), transform 0.3s var(--ease);
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 6px; padding: 2.25rem;
+  border-top: 2px solid transparent;
+  transition: box-shadow 0.35s var(--ease), transform 0.35s var(--ease), border-top-color 0.3s;
 }
-.contact-option:hover { box-shadow: 0 16px 48px rgba(44,24,16,0.1); transform: translateY(-4px); }
-.contact-option .contact-icon { font-size: 2rem; margin-bottom: 1rem; }
+.contact-option:hover { box-shadow: 0 16px 48px rgba(28,40,32,0.1); transform: translateY(-4px); border-top-color: var(--terra); }
+.contact-option .contact-icon { font-size: 1.6rem; margin-bottom: 1.25rem; display: block; }
 .contact-option h3 { margin-bottom: 0.5rem; }
-.contact-option p  { font-size: 0.9rem; margin-bottom: 1.5rem; }
+.contact-option p  { font-size: 0.9rem; margin-bottom: 1.5rem; line-height: 1.7; }
 
 /* ── FOOTER ── */
 footer {
-  background: var(--dark); padding: clamp(2.5rem, 5vw, 4rem) 0 2rem;
+  background: #111A14; padding: clamp(2.5rem, 5vw, 4rem) 0 2rem;
 }
 .footer-inner {
   max-width: 1120px; margin: 0 auto;
@@ -450,34 +485,38 @@ footer {
 .footer-bottom p { font-size: 0.82rem; color: rgba(255,255,255,0.35); }
 
 /* ── INCLUDES GRID (websites page) ── */
-.includes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+.includes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
 .include-item {
-  display: flex; align-items: flex-start; gap: 0.75rem;
-  background: #fff; border: 1px solid var(--border);
-  border-radius: 12px; padding: 1.1rem;
+  display: flex; align-items: flex-start; gap: 1rem;
+  background: var(--card); padding: 1.25rem;
 }
-.include-check { color: var(--terra); font-size: 1.1rem; flex-shrink: 0; margin-top: 0.1rem; }
-.include-item strong { display: block; font-size: 0.9rem; color: var(--dark); }
+.include-check {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--terra); flex-shrink: 0; margin-top: 0.5rem;
+}
+.include-item strong { display: block; font-size: 0.9rem; color: var(--dark); margin-bottom: 0.15rem; }
 .include-item span { font-size: 0.82rem; color: var(--muted); }
 
 /* ── HIGHLIGHT BOX ── */
 .highlight-box {
-  background: linear-gradient(135deg, var(--terra) 0%, var(--sienna) 100%);
-  border-radius: 20px; padding: clamp(2rem, 4vw, 3.5rem);
-  color: #fff;
+  background: #111A14;
+  border-radius: 6px; padding: clamp(2rem, 4vw, 3.5rem);
+  color: #fff; border-left: 3px solid var(--terra);
 }
 .highlight-box h2, .highlight-box h3 { color: #fff; }
-.highlight-box p { color: rgba(255,255,255,0.8); }
+.highlight-box p { color: rgba(255,255,255,0.7); }
 
 /* ── VALUES GRID ── */
-.values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.25rem; }
+.values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
 .value-card {
-  background: #fff; border: 1px solid var(--border);
-  border-radius: 16px; padding: 1.75rem;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 6px; padding: 2rem 1.75rem;
+  border-top: 2px solid var(--terra);
 }
-.value-card .vi { font-size: 1.6rem; margin-bottom: 0.75rem; }
-.value-card h3 { font-size: 1rem; margin-bottom: 0.4rem; }
-.value-card p  { font-size: 0.85rem; }
+.value-card .vi { font-size: 0; margin-bottom: 1.25rem; }
+.value-card .vi::before { content: ''; display: block; width: 24px; height: 2px; background: var(--sienna); }
+.value-card h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+.value-card p  { font-size: 0.86rem; line-height: 1.7; }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
@@ -501,11 +540,19 @@ footer {
 
 /* ── CTA BAND ── */
 .cta-band {
-  background: linear-gradient(135deg, var(--dark) 0%, #3d2016 100%);
+  background: #111814;
+  border-top: 2px solid var(--terra);
   padding: clamp(3rem, 6vw, 5.5rem) 0; text-align: center;
 }
-.cta-band h2 { color: #fff; }
-.cta-band p  { color: rgba(255,255,255,0.6); max-width: 48ch; margin: 1rem auto 2rem; }
+.cta-band h2 { color: #EDF2EC; }
+.cta-band p  { color: rgba(210,225,215,0.55); max-width: 48ch; margin: 1rem auto 2rem; line-height: 1.75; }
+
+/* ── DARK SECTION stat override ── */
+.section-dark .stat-num { color: var(--terra) !important; }
+.section-dark .stat-box { text-align: left; border-right-color: rgba(255,255,255,0.08); }
+.section-dark .stat-box:last-child { border-right: none; }
+.section-dark .stats-grid { border-color: rgba(255,255,255,0.08); }
+.section-dark .stat-label { color: rgba(255,255,255,0.45) !important; }
 
 /* ── NAV LOGO LIGHT (on dark bg) ── */
 .nav-logo-light { display: block; }
@@ -576,7 +623,7 @@ nav.scrolled .nav-logo-dark  { display: block; }
       <polygon points="180,80 260,160 180,240" fill="#C8562A" opacity="0.5"/>
     </svg>
     <div class="hero-content">
-      <div class="hero-badge">✦ Professional Websites for Growing Businesses</div>
+      <div class="hero-badge">Professional Websites for Growing Businesses</div>
       <h1>Everything your business needs<br>to look good and <em>run smarter.</em></h1>
       <p class="hero-sub">AgentShift builds professional websites for small businesses and professional services — fast, affordable, and genuinely good. We also offer AI automation to help you work smarter.</p>
       <div class="hero-actions">
@@ -625,21 +672,21 @@ nav.scrolled .nav-logo-dark  { display: block; }
       <div class="services-grid" style="margin-top:2.5rem;">
         <div class="service-card" data-reveal data-delay="1" onclick="navigate('websites')" style="cursor:pointer;border: 2px solid var(--terra); position:relative;">
           <div style="position:absolute;top:-1px;right:1.5rem;background:var(--terra);color:#fff;font-size:0.7rem;font-weight:700;letter-spacing:0.1em;padding:0.3em 0.9em;border-radius:0 0 8px 8px;">MOST POPULAR</div>
-          <div class="service-icon">🌐</div>
+          <div class="service-icon"></div>
           <h3>Professional Websites</h3>
           <p>Fast, mobile-friendly, designed to win trust and generate enquiries. Built and live within a week — copy, design and deployment all included.</p>
           <div class="price">From £400 — get in touch for a quote</div>
           <div class="service-arrow">See what's included →</div>
         </div>
         <div class="service-card" data-reveal data-delay="2" onclick="navigate('services')" style="cursor:pointer;">
-          <div class="service-icon">🤖</div>
+          <div class="service-icon"></div>
           <h3>AI Services &amp; Automation</h3>
           <p>Already have a website? We also offer AI tools and automation to save you hours every week. Contact us for a quote.</p>
           <div class="price">From £200 — get in touch for a quote</div>
           <div class="service-arrow">Explore AI services →</div>
         </div>
         <div class="service-card" data-reveal data-delay="3" onclick="navigate('construction')" style="cursor:pointer;">
-          <div class="service-icon">🏗</div>
+          <div class="service-icon"></div>
           <h3>Industry Specialists</h3>
           <p>Whether you're in professional services, property, creative or any other sector — AI tools built around the specific language and documents of your business.</p>
           <div class="price">Sector-specific solutions</div>
@@ -660,19 +707,19 @@ nav.scrolled .nav-logo-dark  { display: block; }
           <p data-reveal data-delay="3">Clients Google you before they call. If they land on something outdated, slow or non-existent, you've already lost the job. AgentShift builds websites that make the right first impression — and includes the copy, so you don't have to write a word.</p>
           <div data-reveal data-delay="4" style="margin-top:2rem;display:flex;flex-direction:column;gap:0.7rem;">
             <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.92rem;color:var(--dark);">
-              <span style="color:var(--terra);font-size:1rem;">✓</span> Mobile-first design, fast loading
+              <span style="color:var(--terra);font-weight:400;font-size:0.9rem;flex-shrink:0;">—</span> Mobile-first design, fast loading
             </div>
             <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.92rem;color:var(--dark);">
-              <span style="color:var(--terra);font-size:1rem;">✓</span> AI-assisted copywriting included
+              <span style="color:var(--terra);font-weight:400;font-size:0.9rem;flex-shrink:0;">—</span> AI-assisted copywriting included
             </div>
             <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.92rem;color:var(--dark);">
-              <span style="color:var(--terra);font-size:1rem;">✓</span> Contact form, portfolio, reviews section
+              <span style="color:var(--terra);font-weight:400;font-size:0.9rem;flex-shrink:0;">—</span> Contact form, portfolio, reviews section
             </div>
             <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.92rem;color:var(--dark);">
-              <span style="color:var(--terra);font-size:1rem;">✓</span> Deployed &amp; live — we handle everything
+              <span style="color:var(--terra);font-weight:400;font-size:0.9rem;flex-shrink:0;">—</span> Deployed &amp; live — we handle everything
             </div>
             <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.92rem;color:var(--dark);">
-              <span style="color:var(--terra);font-size:1rem;">✓</span> Starting from 3 pages — priced by your needs
+              <span style="color:var(--terra);font-weight:400;font-size:0.9rem;flex-shrink:0;">—</span> Starting from 3 pages — priced by your needs
             </div>
           </div>
           <div data-reveal data-delay="5" style="margin-top:2rem;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;">
@@ -682,7 +729,7 @@ nav.scrolled .nav-logo-dark  { display: block; }
         </div>
         <div data-reveal="right" data-delay="1">
           <!-- Browser mockup -->
-          <div style="background:#fff;border-radius:16px;box-shadow:0 24px 64px rgba(44,24,16,0.14);overflow:hidden;border:1px solid var(--border);">
+          <div style="background:var(--card);border-radius:6px;box-shadow:0 24px 64px rgba(28,40,32,0.12);overflow:hidden;border:1px solid var(--border);">
             <!-- Browser chrome -->
             <div style="background:#f0ebe4;padding:0.75rem 1rem;display:flex;align-items:center;gap:0.6rem;border-bottom:1px solid var(--border);">
               <div style="display:flex;gap:0.4rem;">
@@ -750,15 +797,15 @@ nav.scrolled .nav-logo-dark  { display: block; }
             </div>
             <div style="display:flex;flex-direction:column;gap:0.75rem;">
               <div style="background:rgba(255,255,255,0.06);border-radius:10px;padding:1rem;display:flex;align-items:flex-start;gap:0.75rem;">
-                <span style="color:var(--terra);font-size:1rem;margin-top:0.1rem;">✓</span>
+                <span style="color:var(--terra);font-weight:300;font-size:1rem;margin-top:0.1rem;flex-shrink:0;">—</span>
                 <div><div style="color:#fff;font-size:0.88rem;font-weight:600;">Site report drafted</div><div style="color:rgba(255,255,255,0.45);font-size:0.78rem;margin-top:0.2rem;">2 pages → generated in 40 seconds</div></div>
               </div>
               <div style="background:rgba(255,255,255,0.06);border-radius:10px;padding:1rem;display:flex;align-items:flex-start;gap:0.75rem;">
-                <span style="color:var(--terra);font-size:1rem;margin-top:0.1rem;">✓</span>
+                <span style="color:var(--terra);font-weight:300;font-size:1rem;margin-top:0.1rem;flex-shrink:0;">—</span>
                 <div><div style="color:#fff;font-size:0.88rem;font-weight:600;">Client email written</div><div style="color:rgba(255,255,255,0.45);font-size:0.78rem;margin-top:0.2rem;">Professional tone, ready to send</div></div>
               </div>
               <div style="background:rgba(255,255,255,0.06);border-radius:10px;padding:1rem;display:flex;align-items:flex-start;gap:0.75rem;">
-                <span style="color:var(--terra);font-size:1rem;margin-top:0.1rem;">✓</span>
+                <span style="color:var(--terra);font-weight:300;font-size:1rem;margin-top:0.1rem;flex-shrink:0;">—</span>
                 <div><div style="color:#fff;font-size:0.88rem;font-weight:600;">Proposal generated</div><div style="color:rgba(255,255,255,0.45);font-size:0.78rem;margin-top:0.2rem;">From notes → full document</div></div>
               </div>
               <div style="background:rgba(200,86,42,0.12);border:1px solid rgba(200,86,42,0.25);border-radius:10px;padding:1rem;display:flex;align-items:center;gap:0.75rem;">
@@ -842,19 +889,19 @@ nav.scrolled .nav-logo-dark  { display: block; }
             <h3 style="margin-bottom:1.25rem;font-size:1.2rem;">What makes this different?</h3>
             <div style="display:flex;flex-direction:column;gap:1.1rem;">
               <div style="display:flex;gap:0.75rem;align-items:flex-start;">
-                <span style="color:rgba(255,255,255,0.9);font-size:1rem;margin-top:0.1rem;">✦</span>
+                <span style="color:var(--terra);font-size:1rem;font-weight:300;margin-top:0.1rem;flex-shrink:0;">—</span>
                 <div><strong style="color:#fff;">Certified Claude specialist</strong><p style="color:rgba(255,255,255,0.7);font-size:0.85rem;margin-top:0.2rem;">Not just "uses ChatGPT". Trained on the most capable AI available.</p></div>
               </div>
               <div style="display:flex;gap:0.75rem;align-items:flex-start;">
-                <span style="color:rgba(255,255,255,0.9);font-size:1rem;margin-top:0.1rem;">✦</span>
+                <span style="color:var(--terra);font-size:1rem;font-weight:300;margin-top:0.1rem;flex-shrink:0;">—</span>
                 <div><strong style="color:#fff;">Websites and AI under one roof</strong><p style="color:rgba(255,255,255,0.7);font-size:0.85rem;margin-top:0.2rem;">Your online presence and your back-office efficiency, sorted together.</p></div>
               </div>
               <div style="display:flex;gap:0.75rem;align-items:flex-start;">
-                <span style="color:rgba(255,255,255,0.9);font-size:1rem;margin-top:0.1rem;">✦</span>
+                <span style="color:var(--terra);font-size:1rem;font-weight:300;margin-top:0.1rem;flex-shrink:0;">—</span>
                 <div><strong style="color:#fff;">Rapid, real results</strong><p style="color:rgba(255,255,255,0.7);font-size:0.85rem;margin-top:0.2rem;">Website live in a week. AI saving time from day one. No 6-month projects.</p></div>
               </div>
               <div style="display:flex;gap:0.75rem;align-items:flex-start;">
-                <span style="color:rgba(255,255,255,0.9);font-size:1rem;margin-top:0.1rem;">✦</span>
+                <span style="color:var(--terra);font-size:1rem;font-weight:300;margin-top:0.1rem;flex-shrink:0;">—</span>
                 <div><strong style="color:#fff;">Straightforward, fixed pricing</strong><p style="color:rgba(255,255,255,0.7);font-size:0.85rem;margin-top:0.2rem;">No retainers, no hidden costs. You know exactly what you're paying for.</p></div>
               </div>
             </div>
@@ -1082,19 +1129,19 @@ nav.scrolled .nav-logo-dark  { display: block; }
       </div>
       <div class="faq-list" style="margin-top:2.5rem;" data-reveal data-delay="1">
         <div class="faq-item">
-          <button class="faq-question">Do I need to be technical?<span class="faq-chevron">▾</span></button>
+          <button class="faq-question">Do I need to be technical?<span class="faq-chevron">+</span></button>
           <div class="faq-answer"><p>Not at all. If you can use email, you can use the AI tools we set up. The whole point is to make this accessible for people who don't have a tech background.</p></div>
         </div>
         <div class="faq-item">
-          <button class="faq-question">What's Claude?<span class="faq-chevron">▾</span></button>
+          <button class="faq-question">What's Claude?<span class="faq-chevron">+</span></button>
           <div class="faq-answer"><p>Claude is Anthropic's AI — widely considered the most capable and reliable AI assistant available. It's better than ChatGPT for professional document work and significantly more accurate for complex tasks. I'm a certified Claude specialist.</p></div>
         </div>
         <div class="faq-item">
-          <button class="faq-question">How quickly will we see results?<span class="faq-chevron">▾</span></button>
+          <button class="faq-question">How quickly will we see results?<span class="faq-chevron">+</span></button>
           <div class="faq-answer"><p>Most clients come out of the first workshop ready to use AI the next morning. Custom automations take a little longer to build, but you'll typically have something running within a week.</p></div>
         </div>
         <div class="faq-item">
-          <button class="faq-question">Is my data safe?<span class="faq-chevron">▾</span></button>
+          <button class="faq-question">Is my data safe?<span class="faq-chevron">+</span></button>
           <div class="faq-answer"><p>Yes. We use Claude via Anthropic's API which does not use your data for training. For sensitive projects we can discuss additional security measures and data handling procedures.</p></div>
         </div>
       </div>
@@ -1152,14 +1199,14 @@ nav.scrolled .nav-logo-dark  { display: block; }
         <p class="section-sub">One quote. No hidden extras, no monthly fees for things you don't need.</p>
       </div>
       <div class="includes-grid" style="margin-top:3rem;">
-        <div class="include-item" data-reveal data-delay="1"><span class="include-check">✓</span><div><strong>Mobile-first design</strong><span>Looks great on every device</span></div></div>
-        <div class="include-item" data-reveal data-delay="2"><span class="include-check">✓</span><div><strong>Fast loading</strong><span>Under 2 seconds on mobile</span></div></div>
-        <div class="include-item" data-reveal data-delay="3"><span class="include-check">✓</span><div><strong>Contact form</strong><span>Enquiries straight to your inbox</span></div></div>
-        <div class="include-item" data-reveal data-delay="4"><span class="include-check">✓</span><div><strong>Google-ready</strong><span>Basic SEO setup included</span></div></div>
-        <div class="include-item" data-reveal data-delay="1"><span class="include-check">✓</span><div><strong>Services pages</strong><span>Showcase what you offer</span></div></div>
-        <div class="include-item" data-reveal data-delay="2"><span class="include-check">✓</span><div><strong>Portfolio / gallery</strong><span>Show your best work</span></div></div>
-        <div class="include-item" data-reveal data-delay="3"><span class="include-check">✓</span><div><strong>Reviews section</strong><span>Build trust with testimonials</span></div></div>
-        <div class="include-item" data-reveal data-delay="4"><span class="include-check">✓</span><div><strong>Deployed &amp; live</strong><span>We handle hosting setup</span></div></div>
+        <div class="include-item" data-reveal data-delay="1"><span class="include-check"></span><div><strong>Mobile-first design</strong><span>Looks great on every device</span></div></div>
+        <div class="include-item" data-reveal data-delay="2"><span class="include-check"></span><div><strong>Fast loading</strong><span>Under 2 seconds on mobile</span></div></div>
+        <div class="include-item" data-reveal data-delay="3"><span class="include-check"></span><div><strong>Contact form</strong><span>Enquiries straight to your inbox</span></div></div>
+        <div class="include-item" data-reveal data-delay="4"><span class="include-check"></span><div><strong>Google-ready</strong><span>Basic SEO setup included</span></div></div>
+        <div class="include-item" data-reveal data-delay="1"><span class="include-check"></span><div><strong>Services pages</strong><span>Showcase what you offer</span></div></div>
+        <div class="include-item" data-reveal data-delay="2"><span class="include-check"></span><div><strong>Portfolio / gallery</strong><span>Show your best work</span></div></div>
+        <div class="include-item" data-reveal data-delay="3"><span class="include-check"></span><div><strong>Reviews section</strong><span>Build trust with testimonials</span></div></div>
+        <div class="include-item" data-reveal data-delay="4"><span class="include-check"></span><div><strong>Deployed &amp; live</strong><span>We handle hosting setup</span></div></div>
       </div>
     </div>
   </section>
@@ -1173,16 +1220,16 @@ nav.scrolled .nav-logo-dark  { display: block; }
           <h2 data-reveal data-delay="1">Priced for your<br><em>actual needs.</em></h2>
           <p data-reveal data-delay="2" style="margin:1rem 0;">Every site is quoted individually based on your business needs. No bloated packages — just what you actually need, at a fair price.</p>
           <div data-reveal data-delay="3" style="margin-top:1.5rem;">
-            <div style="background:#fff;border:1px solid var(--border);border-radius:16px;padding:2rem;">
+            <div style="background:var(--card);border:1px solid var(--border);border-radius:6px;padding:2rem;">
               <div style="font-size:1rem;font-weight:600;color:var(--muted);margin-bottom:0.25rem;">Starting from</div>
               <div style="font-size:3rem;font-weight:700;color:var(--terra);">£400</div>
               <div style="font-size:0.88rem;color:var(--muted);margin-top:0.25rem;margin-bottom:1.5rem;">for a 3-page site — larger sites quoted on request</div>
               <div style="display:flex;flex-direction:column;gap:0.6rem;margin-bottom:1.75rem;">
-                <div style="font-size:0.9rem;color:var(--dark);">✓ Professional design</div>
-                <div style="font-size:0.9rem;color:var(--dark);">✓ Copywriting included</div>
-                <div style="font-size:0.9rem;color:var(--dark);">✓ 3 pages as standard, more on request</div>
-                <div style="font-size:0.9rem;color:var(--dark);">✓ Contact form + basic SEO</div>
-                <div style="font-size:0.9rem;color:var(--dark);">✓ Deployed and live — we handle it all</div>
+                <div style="font-size:0.9rem;color:var(--dark);">— Professional design</div>
+                <div style="font-size:0.9rem;color:var(--dark);">— Copywriting included</div>
+                <div style="font-size:0.9rem;color:var(--dark);">— 3 pages as standard, more on request</div>
+                <div style="font-size:0.9rem;color:var(--dark);">— Contact form + basic SEO</div>
+                <div style="font-size:0.9rem;color:var(--dark);">— Deployed and live — we handle it all</div>
               </div>
               <a class="btn btn-primary" onclick="navigate('contact')" style="cursor:pointer;width:100%;justify-content:center;">Get a Quote →</a>
             </div>
@@ -1244,19 +1291,19 @@ nav.scrolled .nav-logo-dark  { display: block; }
       <div class="text-center" data-reveal><div class="section-label">FAQ</div><h2 class="section-heading">Website questions</h2></div>
       <div class="faq-list" style="margin-top:2.5rem;" data-reveal data-delay="1">
         <div class="faq-item">
-          <button class="faq-question">How much does a website cost?<span class="faq-chevron">▾</span></button>
+          <button class="faq-question">How much does a website cost?<span class="faq-chevron">+</span></button>
           <div class="faq-answer"><p>Sites start from £400 for 3 pages. Larger or more complex sites are quoted individually — get in touch and we'll give you a clear, fixed price with no hidden extras.</p></div>
         </div>
         <div class="faq-item">
-          <button class="faq-question">Do I need to provide content?<span class="faq-chevron">▾</span></button>
+          <button class="faq-question">Do I need to provide content?<span class="faq-chevron">+</span></button>
           <div class="faq-answer"><p>No. You just need to approve it. If you have existing content, great — we'll use that instead.</p></div>
         </div>
         <div class="faq-item">
-          <button class="faq-question">What about hosting costs?<span class="faq-chevron">▾</span></button>
+          <button class="faq-question">What about hosting costs?<span class="faq-chevron">+</span></button>
           <div class="faq-answer"><p>We set up hosting for you. Ongoing costs are typically £20-£50/month depending on the platform — we'll recommend the most cost-effective option for your needs.</p></div>
         </div>
         <div class="faq-item">
-          <button class="faq-question">Can I update it myself?<span class="faq-chevron">▾</span></button>
+          <button class="faq-question">Can I update it myself?<span class="faq-chevron">+</span></button>
           <div class="faq-answer"><p>Yes, but we include a free update a month. Think you'll need more? Get in touch for a custom quote.</p></div>
         </div>
       </div>
@@ -1422,7 +1469,7 @@ nav.scrolled .nav-logo-dark  { display: block; }
       <div class="two-col" style="align-items:start;">
         <div data-reveal>
           <div class="profile-card">
-            <div class="profile-avatar">👤</div>
+            <div class="profile-avatar"></div>
             <h3>Mark Murray</h3>
             <div class="title">Founder &amp; Claude Specialist</div>
             <p>I help small businesses and professional services firms use AI to work smarter — saving time, improving quality, and doing more with less.</p>
@@ -1566,15 +1613,15 @@ nav.scrolled .nav-logo-dark  { display: block; }
       <div class="text-center" data-reveal><div class="section-label">FAQ</div><h2 class="section-heading">Common questions</h2></div>
       <div class="faq-list" style="margin-top:2.5rem;" data-reveal data-delay="1">
         <div class="faq-item">
-          <button class="faq-question">Is the call really free?<span class="faq-chevron">▾</span></button>
+          <button class="faq-question">Is the call really free?<span class="faq-chevron">+</span></button>
           <div class="faq-answer"><p>Yes, genuinely. No hidden catch. If I don't think AI is the right fit for your business, I'll tell you honestly and save us both time.</p></div>
         </div>
         <div class="faq-item">
-          <button class="faq-question">What should I prepare?<span class="faq-chevron">▾</span></button>
+          <button class="faq-question">What should I prepare?<span class="faq-chevron">+</span></button>
           <div class="faq-answer"><p>Nothing formal. Just think about the parts of your day (or your team's day) that feel most repetitive or time-consuming. That's usually where we start.</p></div>
         </div>
         <div class="faq-item">
-          <button class="faq-question">What kinds of businesses do you work with?<span class="faq-chevron">▾</span></button>
+          <button class="faq-question">What kinds of businesses do you work with?<span class="faq-chevron">+</span></button>
           <div class="faq-answer"><p>Small businesses, professional services firms, agencies, consultancies — really any business with repetitive document or admin work. If you're not sure whether we're the right fit, just get in touch and we'll give you an honest answer.</p></div>
         </div>
       </div>
