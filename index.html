@@ -8,7 +8,7 @@
 <meta name="keywords" content="web design Cardiff, website design Cardiff, web designer Cardiff, affordable web design Cardiff, small business website Cardiff, web development Cardiff, website builder Cardiff, cheap website Cardiff, professional website Cardiff, local web designer Cardiff, AgentShift, agent shift, agentshift.co.uk, AI services Cardiff, AI automation Cardiff, AI consultancy Cardiff, digital consultancy Cardiff, digital agency Cardiff, Cardiff web agency, website design Wales, web design South Wales, web design CF5, web design Canton Cardiff, freelance web designer Cardiff, website from scratch Cardiff, new website Cardiff, business website Cardiff, trade website Cardiff, solicitor website Cardiff, accountant website Cardiff, restaurant website Cardiff">
 <meta name="author" content="Mark Murray — AgentShift">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-<meta name="theme-color" content="#1A1410">
+<meta name="theme-color" content="#1C2820">
 
 <!-- Geo / Local -->
 <meta name="geo.region" content="GB-WLS">
@@ -166,21 +166,21 @@ html { scroll-behavior: smooth; }
 body {
   font-family: 'Inter', system-ui, sans-serif;
   background: var(--cream);
-  color: #1A1410;
+  color: #1C2820;
   line-height: 1.6;
   overflow-x: hidden;
 }
 
 /* ── CSS VARIABLES ── */
 :root {
-  --dark:   #1A1410;       /* warm near-black */
+  --dark:   #1C2820;       /* deep forest — headings & text */
   --terra:  #C8562A;       /* logo accent — do not change */
   --sienna: #7B4A2D;       /* logo triangle — do not change */
-  --oat:    #EDE4D0;       /* warm oat section bg */
-  --cream:  #FAF7F2;       /* warm white page bg */
-  --card:   #FFFFFF;       /* white cards */
-  --muted:  #6B5E52;       /* warm brown-grey body text */
-  --border: rgba(26,20,16,0.1);
+  --oat:    #D9E0D6;       /* muted sage section bg */
+  --cream:  #EEF0EB;       /* sage-tinted white page bg */
+  --card:   #F4F6F2;       /* very light sage card bg */
+  --muted:  #4E5A52;       /* dark sage-grey body text */
+  --border: rgba(24,31,28,0.12);
   --ease:   cubic-bezier(0.16, 1, 0.3, 1);
   --nav-h:  68px;
 }
@@ -237,7 +237,7 @@ nav {
   transition: background 0.4s, box-shadow 0.4s, backdrop-filter 0.4s;
 }
 nav.scrolled {
-  background: rgba(250,247,242,0.95);
+  background: rgba(238,240,235,0.94);
   backdrop-filter: blur(14px);
   box-shadow: 0 1px 0 var(--border);
 }
@@ -339,7 +339,7 @@ nav.scrolled .nav-links a.active { color: var(--terra); }
 /* ── HERO (HOME) ── */
 .hero {
   min-height: 100vh;
-  background: #1A1410;
+  background: #111A14;
   display: flex; align-items: center;
   position: relative; overflow: hidden;
   padding-top: var(--nav-h);
@@ -347,7 +347,7 @@ nav.scrolled .nav-links a.active { color: var(--terra); }
 .hero-bg {
   position: absolute; inset: 0;
   background: radial-gradient(ellipse 70% 60% at 68% 40%, rgba(200,86,42,0.18) 0%, transparent 65%),
-              radial-gradient(ellipse 55% 75% at 10% 80%, rgba(123,74,45,0.35) 0%, transparent 60%),
+              radial-gradient(ellipse 55% 75% at 10% 80%, rgba(38,62,48,0.55) 0%, transparent 60%),
               radial-gradient(ellipse 40% 50% at 50% 100%, rgba(26,20,16,0.6) 0%, transparent 50%);
 }
 .hero-triangles {
@@ -475,12 +475,12 @@ nav.scrolled .nav-links a.active { color: var(--terra); }
 
 /* ── PAGE HERO (inner pages) ── */
 .page-hero {
-  background: #1A1410; padding: clamp(6rem, 10vw, 9rem) 0 clamp(3rem, 5vw, 5rem);
+  background: #111A14; padding: clamp(6rem, 10vw, 9rem) 0 clamp(3rem, 5vw, 5rem);
   position: relative; overflow: hidden;
 }
 .page-hero::after {
   content: ''; position: absolute; inset: 0;
-  background: radial-gradient(ellipse 55% 70% at 80% 50%, rgba(200,86,42,0.12) 0%, transparent 65%), radial-gradient(ellipse 40% 60% at 5% 80%, rgba(123,74,45,0.3) 0%, transparent 55%);
+  background: radial-gradient(ellipse 55% 70% at 80% 50%, rgba(200,86,42,0.12) 0%, transparent 65%), radial-gradient(ellipse 40% 60% at 5% 80%, rgba(38,62,48,0.4) 0%, transparent 55%);
   pointer-events: none;
 }
 .page-hero .container { position: relative; z-index: 1; }
@@ -595,7 +595,7 @@ nav.scrolled .nav-links a.active { color: var(--terra); }
 /* ── COMPARISON TABLE ── */
 .compare-table { width: 100%; border-collapse: collapse; border-radius: 12px; overflow: hidden; }
 .compare-table th, .compare-table td { padding: 0.9rem 1.2rem; text-align: left; font-size: 0.9rem; }
-.compare-table thead tr { background: #1A1410; color: #fff; }
+.compare-table thead tr { background: #111A14; color: #fff; }
 .compare-table thead th { font-weight: 600; }
 .compare-table tbody tr:nth-child(odd) { background: var(--card); }
 .compare-table tbody tr:nth-child(even) { background: var(--oat); }
@@ -604,9 +604,9 @@ nav.scrolled .nav-links a.active { color: var(--terra); }
 .compare-table .cross { color: #aaa; }
 
 /* ── DARK SECTION ── */
-.section-dark { background: #1A1410; }  /* warm dark brown */
-.section-dark h2, .section-dark h3, .section-dark .stat-num { color: #F5EFE8; }
-.section-dark p { color: rgba(245,235,225,0.58); }
+.section-dark { background: #111A14; }  /* deep forest green-black */
+.section-dark h2, .section-dark h3, .section-dark .stat-num { color: #EDF2EC; }
+.section-dark p { color: rgba(210,225,215,0.58); }
 .section-dark .section-label { color: #D4774A; border-left-color: #D4774A; }
 .section-dark .stat-box { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.07); }
 
@@ -649,7 +649,7 @@ nav.scrolled .nav-links a.active { color: var(--terra); }
 
 /* ── FOOTER ── */
 footer {
-  background: #1A1410; padding: clamp(2.5rem, 5vw, 4rem) 0 2rem;
+  background: #111A14; padding: clamp(2.5rem, 5vw, 4rem) 0 2rem;
 }
 .footer-inner {
   max-width: 1120px; margin: 0 auto;
@@ -685,7 +685,7 @@ footer {
 
 /* ── HIGHLIGHT BOX ── */
 .highlight-box {
-  background: #1A1410;
+  background: #111A14;
   border-radius: 6px; padding: clamp(2rem, 4vw, 3.5rem);
   color: #fff; border-left: 3px solid var(--terra);
 }
@@ -726,12 +726,12 @@ footer {
 
 /* ── CTA BAND ── */
 .cta-band {
-  background: #130F0C;
+  background: #111814;
   border-top: 2px solid var(--terra);
   padding: clamp(3rem, 6vw, 5.5rem) 0; text-align: center;
 }
-.cta-band h2 { color: #F5EFE8; }
-.cta-band p  { color: rgba(245,235,225,0.55); max-width: 48ch; margin: 1rem auto 2rem; line-height: 1.75; }
+.cta-band h2 { color: #EDF2EC; }
+.cta-band p  { color: rgba(210,225,215,0.55); max-width: 48ch; margin: 1rem auto 2rem; line-height: 1.75; }
 
 /* ── DARK SECTION stat override ── */
 .section-dark .stat-num { color: var(--terra) !important; }
